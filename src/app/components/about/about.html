@@ -1,0 +1,64 @@
+<!-- ─────────────────────────────────────────────────
+     ABOUT — Adrian Zavaleta Portfolio
+     ──────────────────────────────────────────────── -->
+<section id="about" class="about" aria-label="About section">
+
+  <!-- Background decorations -->
+  <div class="about__bg-grid" aria-hidden="true"></div>
+  <div class="about__glow about__glow--left"  aria-hidden="true"></div>
+  <div class="about__glow about__glow--right" aria-hidden="true"></div>
+
+  <div class="about__inner">
+
+    <!-- ── Section header ── -->
+    <div class="about__header">
+      <span class="section__tag">// about me</span>
+      <h2 class="section__title">Quién
+        <span class="section__title-accent">soy</span>
+      </h2>
+    </div>
+
+    <!-- ── Top: bio + stats ── -->
+    <div class="about__top">
+
+      <div class="row">
+          <!-- Bio card -->
+          <div class="about__bio-card glass-card">
+            <div class="about__bio-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <h3 class="about__bio-title">Bio</h3>
+            <p class="about__bio-text" *ngFor="let line of bio.split('\n')">{{ line }}</p>
+
+            <!-- Currently learning pills -->
+            <div class="about__learning">
+              <span class="about__learning-label">// currently learning</span>
+              <div class="about__pills">
+                <span class="pill pill--teal">Angular</span>
+                <span class="pill pill--blue">React</span>
+                <span class="pill pill--orange">AWS</span>
+                <span class="pill pill--sky">Azure</span>
+                <span class="pill pill--green">DevOps</span>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+      <!-- Stats grid -->
+      <div class="about__stats">
+        <div
+          class="stat-card glass-card"
+          *ngFor="let stat of stats"
+        >
+          <div class="stat-card__value">
+            {{ stat.value }}<span class="stat-card__suffix">{{ stat.suffix }}</span>
+          </div>
+          <div class="stat-card__label">{{ stat.label }}</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>

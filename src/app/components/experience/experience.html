@@ -1,0 +1,124 @@
+<!-- ─────────────────────────────────────────────────
+     EXPERIENCE — Adrian Zavaleta Portfolio
+     Timeline · del más reciente al más antiguo
+     ──────────────────────────────────────────────── -->
+<section id="experience" class="experience" aria-label="Experience section">
+
+  <div class="experience__bg-grid" aria-hidden="true"></div>
+  <div class="experience__glow experience__glow--left"  aria-hidden="true"></div>
+  <div class="experience__glow experience__glow--right" aria-hidden="true"></div>
+
+  <div class="experience__inner">
+
+    <!-- ── Header ── -->
+    <div class="experience__header">
+      <span class="section__tag">// experience</span>
+      <h2 class="section__title">
+        Trayectoria
+        <span class="section__title-accent">profesional</span>
+      </h2>
+      <p class="experience__subtitle">
+        Un poco de mi historial laboral — del más reciente al más antiguo.
+      </p>
+    </div>
+
+    <!-- ── Timeline ── -->
+    <div class="timeline" role="list">
+
+      <div
+        class="timeline__item"
+        *ngFor="let exp of experiences; let i = index; let last = last"
+        [class.timeline__item--last]="last"
+        role="listitem"
+      >
+
+        <!-- ── Left: date column ── -->
+        <div class="timeline__date-col" aria-hidden="true">
+          <span class="timeline__date-end" [class.timeline__date-end--current]="exp.current">
+            {{ exp.current ? 'Presente' : exp.endDate }}
+          </span>
+          <span class="timeline__date-sep">—</span>
+          <span class="timeline__date-start">{{ exp.startDate }}</span>
+        </div>
+
+        <!-- ── Center: line + dot ── -->
+        <div class="timeline__axis" aria-hidden="true">
+          <div class="timeline__dot" [class.timeline__dot--current]="exp.current">
+            <div class="timeline__dot-inner"></div>
+          </div>
+          <div class="timeline__line" *ngIf="!last"></div>
+        </div>
+
+        <!-- ── Right: card ── -->
+        <div class="timeline__card glass-card">
+
+          <!-- Card header (always visible) -->
+          <div
+            class="timeline__card-header"
+            (click)="toggleExpand(exp.id)"
+            [attr.aria-expanded]="isExpanded(exp.id)"
+            [attr.aria-controls]="'exp-body-' + exp.id"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="toggleExpand(exp.id)"
+            (keydown.space)="toggleExpand(exp.id)"
+          >
+            <div class="timeline__card-meta">
+
+              <!-- Current badge -->
+              <span class="badge badge--current" *ngIf="exp.current">
+                <span class="badge__dot" aria-hidden="true"></span>
+                Actual
+              </span>
+
+              <h3 class="timeline__role">{{ exp.role }}</h3>
+
+              <div class="timeline__company-row">
+                <span class="timeline__company">{{ exp.company }}</span>
+                <span class="timeline__sep" aria-hidden="true">·</span>
+                <span class="timeline__location">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                  {{ exp.location }}
+                </span>
+              </div>
+
+              <!-- Mobile date (visible only on small screens) -->
+              <span class="timeline__date-mobile">
+                {{ exp.startDate }} — {{ exp.current ? 'Presente' : exp.endDate }}
+              </span>
+            </div>
+
+            <!-- Expand chevron -->
+            <div class="timeline__chevron" [class.timeline__chevron--open]="isExpanded(exp.id)" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card body (expandable) -->
+          <div
+            class="timeline__card-body"
+            [id]="'exp-body-' + exp.id"
+            [class.timeline__card-body--open]="isExpanded(exp.id)"
+            role="region"
+            [attr.aria-label]="'Detalles de ' + exp.role"
+          >
+            <div class="timeline__card-body-inner">
+              <p class="timeline__desc">{{ exp.description }}</p>
+              <div class="timeline__tags">
+                <span class="tag" *ngFor="let tag of exp.tags">{{ tag }}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

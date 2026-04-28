@@ -1,0 +1,120 @@
+<!-- ─────────────────────────────────────────────
+     NAVBAR — Adrian Zavaleta Portfolio
+     Glassmorphism · dark · teal/purple accent
+     ───────────────────────────────────────── -->
+
+<nav
+  class="navbar"
+  [class.navbar--hidden]="isNavHidden()"
+  [class.navbar--scrolled]="lastScrollY > 20"
+>
+  <div class="navbar__inner">
+
+    <!-- ── Brand ── -->
+    <button class="navbar__brand" (click)="scrollTo('home')" aria-label="Go to top">
+      <span class="navbar__avatar" aria-hidden="true">{{ initials }}</span>
+      <span class="navbar__name">{{ fullName }}</span>
+    </button>
+
+    <!-- ── Desktop links ── -->
+    <ul class="navbar__links" role="list">
+      <li *ngFor="let link of navLinks">
+        <button
+          class="navbar__link"
+          [class.navbar__link--active]="isActive(link.fragment)"
+          (click)="scrollTo(link.fragment)"
+          [attr.aria-current]="isActive(link.fragment) ? 'page' : null"
+        >
+          {{ link.label }}
+          <span class="navbar__link-dot" aria-hidden="true"></span>
+        </button>
+      </li>
+    </ul>
+
+    <!-- ── Hire me CTA (desktop) ── -->
+    <a
+      href="mailto:tu@email.com"
+      class="navbar__cta"
+      aria-label="Hire Adrian Zavaleta"
+    >
+      Hire me
+    </a>
+
+    <!-- ── Hamburger (mobile) ── -->
+    <button
+      class="navbar__hamburger"
+      (click)="toggleMobileMenu()"
+      [attr.aria-expanded]="isMobileOpen()"
+      aria-label="Toggle navigation menu"
+      aria-controls="mobile-menu"
+    >
+      <span class="hamburger__bar" [class.hamburger__bar--open]="isMobileOpen()"></span>
+      <span class="hamburger__bar" [class.hamburger__bar--open]="isMobileOpen()"></span>
+      <span class="hamburger__bar" [class.hamburger__bar--open]="isMobileOpen()"></span>
+    </button>
+
+  </div>
+
+  <!-- ── Mobile drawer ── -->
+  <div
+    id="mobile-menu"
+    class="navbar__mobile"
+    [class.navbar__mobile--open]="isMobileOpen()"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation menu"
+  >
+    <!-- Backdrop -->
+    <div
+      class="navbar__backdrop"
+      (click)="closeMobileMenu()"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Drawer panel -->
+    <div class="navbar__drawer">
+
+      <!-- Drawer header -->
+      <div class="drawer__header">
+        <span class="navbar__avatar navbar__avatar--lg" aria-hidden="true">{{ initials }}</span>
+        <div>
+          <p class="drawer__name">{{ fullName }}</p>
+          <p class="drawer__role">Full Stack Developer</p>
+        </div>
+        <button
+          class="drawer__close"
+          (click)="closeMobileMenu()"
+          aria-label="Close menu"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer links -->
+      <ul class="drawer__links" role="list">
+        <li *ngFor="let link of navLinks; let i = index">
+          <button
+            class="drawer__link"
+            [class.drawer__link--active]="isActive(link.fragment)"
+            [style.animation-delay]="(i * 60) + 'ms'"
+            (click)="scrollTo(link.fragment)"
+            [attr.aria-current]="isActive(link.fragment) ? 'page' : null"
+          >
+            <span class="drawer__link-number">{{ (i + 1).toString().padStart(2,'0') }}</span>
+            {{ link.label }}
+          </button>
+        </li>
+      </ul>
+
+      <!-- Drawer CTA -->
+      <div class="drawer__footer">
+        <a href="mailto:tu@email.com" class="drawer__cta" (click)="closeMobileMenu()">
+          Get in touch
+        </a>
+      </div>
+    </div>
+  </div>
+
+</nav>

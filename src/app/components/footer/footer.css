@@ -1,0 +1,251 @@
+/* ═══════════════════════════════════════════════
+   FOOTER — Adrian Zavaleta Portfolio
+   ═══════════════════════════════════════════════ */
+
+:host {
+  --teal:       #2dd4bf;
+  --teal-dim:   #0f766e;
+  --teal-glow:  rgba(45, 212, 191, 0.1);
+  --purple:     #a78bfa;
+  --border:     rgba(255, 255, 255, 0.07);
+  --text:       #f1f5f9;
+  --muted:      rgba(241, 245, 249, 0.45);
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Footer base ──────────────────────────────── */
+.footer {
+  position: relative;
+  background: #060608;
+  padding: 0 1.5rem 2rem;
+  overflow: hidden;
+}
+
+.footer__glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(45,212,191,0.06) 0%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ── Top divider ──────────────────────────────── */
+.footer__divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(45,212,191,0.3) 30%,
+    rgba(167,139,250,0.3) 70%,
+    transparent 100%
+  );
+  margin-bottom: 0.5rem;
+}
+
+/* ── Main row ─────────────────────────────────── */
+.footer__main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .footer__main {
+    grid-template-columns: 1fr auto auto;
+    gap: 2.5rem;
+  }
+}
+
+/* ── Brand ────────────────────────────────────── */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--text);
+}
+
+.footer__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal-dim), #6d28d9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+}
+
+.footer__name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.footer__tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  padding-left: 0.1rem;
+}
+
+/* ── Visit counter ────────────────────────────── */
+.glass-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.footer__counter-icon {
+  color: var(--teal);
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.footer__counter-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.footer__counter-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--teal);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  min-width: 2.5ch;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer__counter-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Socials ──────────────────────────────────── */
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.footer__social {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
+}
+
+.footer__social:hover {
+  color: var(--teal);
+  border-color: rgba(45,212,191,0.3);
+  background: var(--teal-glow);
+  transform: translateY(-2px);
+}
+
+/* ── Bottom row ───────────────────────────────── */
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 0.25rem;
+}
+
+.footer__copy {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.footer__heart {
+  color: #f87171;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* Back to top */
+.footer__top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.footer__top-btn:hover {
+  color: var(--teal);
+  border-color: rgba(45,212,191,0.3);
+  background: var(--teal-glow);
+}
+
+/* ── Accessibility ────────────────────────────── */
+.footer__social:focus-visible,
+.footer__logo:focus-visible,
+.footer__top-btn:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}

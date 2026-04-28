@@ -1,0 +1,65 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface TechItem {
+  name: string;
+  category: string;
+  level: number;
+  color: string;
+}
+
+interface Stat {
+  value: string;
+  label: string;
+  suffix?: string;
+}
+
+@Component({
+  selector: 'app-about',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './about.html',
+  styleUrls: ['./about.css']
+})
+export class About {
+
+  readonly bio = `Desarrollador web con experiencia en .NET, C#, HTML, CSS y JavaScript.
+Apasionado por entregar software de alta calidad y aprender constantemente nuevas tecnologías.
+Actualmente cursando una maestría en DevOps y Cloud, expandiendo mi stack hacia Angular, React, AWS y Azure.`;
+
+  readonly stats: Stat[] = [
+    { value: 'Maestría',  label: 'Desarrollo y Operaciones de Software - UNIR México (2024-Cursando)' },
+    { value: 'Licenciatura',  label: 'Ingeniería en Sistemas Computacionales - ITSPR(2006-2011)'},
+    { value: 'Idiomas',  label: 'Español nativo, Inglés (B1)' },
+    { value: 'Certificaciones/Cursos',  label: 'Scrum Fundamentals ID 924314, Udemy P-SQL, Udemy Git, Udemy.net', suffix: ' +' },
+  ];
+
+  // readonly techStack: TechItem[] = [
+  //   { name: 'C# / .NET',  category: 'Backend',   level: 4, color: '#a78bfa' },
+  //   { name: 'JavaScript', category: 'Frontend',  level: 4, color: '#fbbf24' },
+  //   { name: 'TypeScript', category: 'Frontend',  level: 3, color: '#60a5fa' },
+  //   { name: 'HTML & CSS', category: 'Frontend',  level: 5, color: '#f87171' },
+  //   { name: 'Angular',    category: 'Framework', level: 3, color: '#2dd4bf' },
+  //   { name: 'React',      category: 'Framework', level: 2, color: '#67e8f9' },
+  //   { name: 'AWS',        category: 'Cloud',     level: 2, color: '#fb923c' },
+  //   { name: 'Azure',      category: 'Cloud',     level: 2, color: '#38bdf8' },
+  //   { name: 'DevOps',     category: 'Cloud',     level: 2, color: '#4ade80' },
+  //   { name: 'SQL',        category: 'Database',  level: 3, color: '#e879f9' },
+  // ];
+
+  // readonly filterTabs = ['All', 'Frontend', 'Backend', 'Framework', 'Cloud', 'Database'];
+  // activeFilter = 'All';
+
+  // get filteredStack(): TechItem[] {
+  //   if (this.activeFilter === 'All') return this.techStack;
+  //   return this.techStack.filter(t => t.category === this.activeFilter);
+  // }
+
+  // setFilter(cat: string): void {
+  //   this.activeFilter = cat;
+  // }
+
+  levelArray(n: number): number[] {
+    return Array.from({ length: 5 }, (_, i) => i);
+  }
+}
