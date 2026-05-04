@@ -431,3 +431,102 @@
   outline: 2px solid var(--teal);
   outline-offset: 2px;
 }
+
+/* ══════════════════════════════════════════════════════
+   LANG TOGGLE — additions to navbar.component.css
+   Pega este bloque al final de navbar.component.css
+   ══════════════════════════════════════════════════════ */
+
+/* Right side wrapper */
+.navbar__right {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar__right { display: flex; }
+}
+
+/* ── Flag toggle button ──────────────────────────────── */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  color: rgba(241, 245, 249, 0.6);
+}
+
+.lang-toggle:hover {
+  background: rgba(45, 212, 191, 0.08);
+  border-color: rgba(45, 212, 191, 0.3);
+  color: #2dd4bf;
+  transform: translateY(-1px);
+}
+
+.lang-toggle:active {
+  transform: translateY(0);
+}
+
+/* Flag images */
+.lang-toggle__flag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+  overflow: hidden;
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+  transform: scale(0.9);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.lang-toggle__flag--active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(45, 212, 191, 0.35);
+  box-shadow: 0 0 8px rgba(45, 212, 191, 0.2);
+}
+
+/* Separator between flags */
+.lang-toggle__sep {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.2);
+  line-height: 1;
+}
+
+/* Language label (ES / EN) */
+.lang-toggle__label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: inherit;
+  min-width: 1.5ch;
+}
+
+/* ── Drawer variant ──────────────────────────────────── */
+.lang-toggle--drawer {
+  background: rgba(45, 212, 191, 0.07);
+  border-color: rgba(45, 212, 191, 0.25);
+  color: #2dd4bf;
+  padding: 0.3rem 0.65rem;
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.lang-toggle__label--drawer {
+  font-size: 0.78rem;
+  color: inherit;
+}
+
+/* ── Accessibility ───────────────────────────────────── */
+.lang-toggle:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}

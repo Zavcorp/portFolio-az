@@ -30,9 +30,9 @@ export class Projects {
       description: 'Simulador de precios de autos que permite calcular costos, mensualidades y comparar opciones de financiamiento de forma interactiva.',
       tags: ['Angular', 'TypeScript', 'CSS'],
       liveUrl: 'https://carpricesimulator.netlify.app/',
-      githubUrl: 'https://github.com/Zavcorp', // ← actualiza con el repo real
+      githubUrl: 'https://github.com/Zavcorp/CarPriceSimulator', // ← actualiza con el repo real
       status: 'live',
-      featured: true,
+      //featured: true,
       gradient: 'linear-gradient(135deg, rgba(45,212,191,0.15), rgba(96,165,250,0.1))',
       icon: '🚗',
     },
@@ -49,15 +49,26 @@ export class Projects {
     },
     {
       id: 3,
-      title: 'RankingDjs',
-      description: 'Plataforma de ranking para DJs con sistema de votación, perfiles de artistas y visualización de estadísticas en tiempo real.',
+      title: 'Demo Tienda E-commerce',
+      description: 'Demo de tienda e-commerce con catálogo de productos, carrito de compras y proceso de checkout simulado.',
       tags: ['Angular', 'TypeScript', 'CSS'],
       liveUrl: 'https://ecommerceunir.netlify.app/',
-      githubUrl: 'https://github.com/Zavcorp', // ← actualiza con el repo real
+      githubUrl: 'https://github.com/Zavcorp/angular-ecommerce-demo-UNIR', // ← actualiza con el repo real
       status: 'live',
       gradient: 'linear-gradient(135deg, rgba(167,139,250,0.15), rgba(232,121,249,0.1))',
-      icon: '🎧',
+      icon: '🛒',
     },
+    // {
+    //   id: 3,
+    //   title: 'RankingDjs',
+    //   description: 'Plataforma de ranking para DJs con sistema de votación, perfiles de artistas y visualización de estadísticas en tiempo real.',
+    //   tags: ['Angular', 'TypeScript', 'CSS'],
+    //   liveUrl: 'https://ecommerceunir.netlify.app/',
+    //   githubUrl: 'https://github.com/Zavcorp', // ← actualiza con el repo real
+    //   status: 'live',
+    //   gradient: 'linear-gradient(135deg, rgba(167,139,250,0.15), rgba(232,121,249,0.1))',
+    //   icon: '🎧',
+    // },
     {
       id: 4,
       title: 'Próximo proyecto',
@@ -69,6 +80,15 @@ export class Projects {
     },
     {
       id: 5,
+      title: 'Próximo proyecto',
+      description: 'Explorando nuevas ideas y tecnologías. Stay tuned.',
+      tags: ['Por definir'],
+      status: 'coming-soon',
+      gradient: 'linear-gradient(135deg, rgba(56,189,248,0.08), rgba(109,40,217,0.08))',
+      icon: '🚀',
+    },
+    {
+      id: 6,
       title: 'Próximo proyecto',
       description: 'Explorando nuevas ideas y tecnologías. Stay tuned.',
       tags: ['Por definir'],

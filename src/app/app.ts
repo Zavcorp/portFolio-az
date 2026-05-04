@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Contact } from "./components/contact/contact";
 import { Navbar } from "./components/navbar/navbar";
@@ -8,6 +8,7 @@ import { Projects } from "./components/projects/projects";
 import { Footer } from "./components/footer/footer";
 import { Skills } from "./components/skills/skills";
 import { Experience } from "./components/experience/experience";
+import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
@@ -17,4 +18,7 @@ import { Experience } from "./components/experience/experience";
 })
 export class App {
   protected readonly title = signal('portFolio-az');
+  private i18n = inject(TranslationService);
+  ngOnInit() { this.i18n.init(); } // carga el idioma guardado en localStorage
+
 }
