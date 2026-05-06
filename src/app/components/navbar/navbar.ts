@@ -28,7 +28,6 @@ export class Navbar implements OnInit, OnDestroy  {
   readonly navLinks: NavLink[] = [
     { label: 'Home',     fragment: 'home' },
     { label: 'Sobre mi', fragment: 'about' },
-    { label: 'Habilidades', fragment: 'skills' },
     { label: 'Experiencia', fragment: 'experience' },
     { label: 'Proyectos',   fragment: 'projects' },
     { label: 'Contacto',    fragment: 'contact' },

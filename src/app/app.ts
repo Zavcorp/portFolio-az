@@ -6,13 +6,12 @@ import { Hero } from "./components/hero/hero";
 import { About } from "./components/about/about";
 import { Projects } from "./components/projects/projects";
 import { Footer } from "./components/footer/footer";
-import { Skills } from "./components/skills/skills";
 import { Experience } from "./components/experience/experience";
 import { TranslationService } from './services/translation.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Contact, Navbar, Hero, About, Projects, Footer, Skills, Experience],
+  imports: [RouterOutlet, Contact, Navbar, Hero, About, Projects, Footer, Experience],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
