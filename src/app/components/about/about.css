@@ -285,58 +285,78 @@
 /* Tech grid */
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
-.tech-card {
-  padding: 1.1rem 1.2rem;
+.stack-card {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 1.25rem;
   cursor: default;
-  position: relative;
-  overflow: hidden;
 }
 
-/* Color accent line on top */
-.tech-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--tech-color, var(--teal));
-  opacity: 0.6;
-  transition: opacity 0.3s;
-}
-.tech-card:hover::before { opacity: 1; }
-
-.tech-card__category {
+.stack-card__title {
   font-family: 'Courier New', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  color: var(--tech-color, var(--teal));
-  opacity: 0.7;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--teal);
   text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+  margin: 0;
 }
 
-.tech-card__name {
+.stack-card__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: calc(50% - 0.7rem);
+}
+
+@media (max-width: 480px) {
+  .tech-item {
+    width: 100%;
+  }
+}
+
+.tech-item__icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+}
+
+.tech-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tech-item__name {
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text);
 }
 
 /* Level dots */
-.tech-card__level {
+.tech-item__level {
   display: flex;
   gap: 4px;
-  margin-top: 0.2rem;
 }
 
 .level-dot {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   border: 1px solid var(--tech-color, var(--teal));
   opacity: 0.3;

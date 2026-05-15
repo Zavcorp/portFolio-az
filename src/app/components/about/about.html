@@ -5,7 +5,7 @@
 
   <!-- Background decorations -->
   <div class="about__bg-grid" aria-hidden="true"></div>
-  <div class="about__glow about__glow--left"  aria-hidden="true"></div>
+  <div class="about__glow about__glow--left" aria-hidden="true"></div>
   <div class="about__glow about__glow--right" aria-hidden="true"></div>
 
   <div class="about__inner">
@@ -22,42 +22,41 @@
     <div class="about__top">
 
       <div class="row">
-          <!-- Bio card -->
-          <div class="about__bio-card glass-card">
-            <div class="about__bio-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
-              </svg>
-            </div>
-            <h3 class="about__bio-title">Bio</h3>
-            <p class="about__bio-text" *ngFor="let line of bio.split('\n')">{{ line }}</p>
+        <!-- Bio card -->
+        <div class="about__bio-card glass-card">
+          <div class="about__bio-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </div>
+          <h3 class="about__bio-title">Bio</h3>
+          <p class="about__bio-text" *ngFor="let line of bio.split('\n')">{{ line }}</p>
 
-            <!-- Currently learning pills -->
-            <div class="about__learning">
-              <span class="about__learning-label">// currently learning</span>
-              <div class="about__pills">
-                <span class="pill pill--teal">Angular</span>
-                <span class="pill pill--blue">React</span>
-                <span class="pill pill--orange">AWS</span>
-                <span class="pill pill--sky">Azure</span>
-                <span class="pill pill--green">DevOps</span>
-              </div>
+          <!-- Currently learning pills -->
+          <div class="about__learning">
+            <span class="about__learning-label">// currently learning</span>
+            <div class="about__pills">
+              <span class="pill pill--teal">Angular</span>
+              <span class="pill pill--blue">React</span>
+              <span class="pill pill--orange">AWS</span>
+              <span class="pill pill--sky">Azure</span>
+              <span class="pill pill--green">DevOps</span>
             </div>
           </div>
-      </div>
-      <div class="row">
-      <!-- Stats grid -->
-      <div class="about__stats">
-        <div
-          class="stat-card glass-card"
-          *ngFor="let stat of stats"
-        >
-          <div class="stat-card__value">
-            {{ stat.value }}<span class="stat-card__suffix">{{ stat.suffix }}</span>
-          </div>
-          <div class="stat-card__label">{{ stat.label }}</div>
         </div>
       </div>
+      <div class="row">
+        <!-- Stats grid -->
+        <div class="about__stats">
+          <div class="stat-card glass-card" *ngFor="let stat of stats">
+            <div class="stat-card__value">
+              {{ stat.value }}<span class="stat-card__suffix">{{ stat.suffix }}</span>
+            </div>
+            <div class="stat-card__label">{{ stat.label }}</div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -73,14 +72,8 @@
 
         <!-- Filter tabs -->
         <div class="about__filters" role="tablist" aria-label="Filtrar tecnologías">
-          <button
-            *ngFor="let tab of filterTabs"
-            class="filter-tab"
-            [class.filter-tab--active]="activeFilter === tab"
-            (click)="setFilter(tab)"
-            role="tab"
-            [attr.aria-selected]="activeFilter === tab"
-          >
+          <button *ngFor="let tab of filterTabs" class="filter-tab" [class.filter-tab--active]="activeFilter === tab"
+            (click)="setFilter(tab)" role="tab" [attr.aria-selected]="activeFilter === tab">
             {{ tab }}
           </button>
         </div>
@@ -88,25 +81,26 @@
 
       <!-- Tech cards grid -->
       <div class="tech-grid" role="list">
-        <div
-          class="tech-card glass-card"
-          *ngFor="let tech of filteredStack"
-          role="listitem"
-          [style.--tech-color]="tech.color"
-        >
-          <!-- Category badge -->
-          <span class="tech-card__category">{{ tech.category }}</span>
+        <div class="stack-card glass-card" *ngFor="let group of filteredGroupedStack" role="listitem">
+          <!-- Category title -->
+          <h4 class="stack-card__title">{{ group.category }}</h4>
 
-          <!-- Name -->
-          <span class="tech-card__name">{{ tech.name }}</span>
-
-          <!-- Level dots -->
-          <div class="tech-card__level" [attr.aria-label]="'Nivel ' + tech.level + ' de 5'">
-            <span
-              *ngFor="let dot of levelArray(tech.level); let i = index"
-              class="level-dot"
-              [class.level-dot--filled]="i < tech.level"
-            ></span>
+          <!-- Tech items inside the stack -->
+          <div class="stack-card__items">
+            <div class="tech-item" *ngFor="let tech of group.items" [style.--tech-color]="tech.color">
+              <img [src]="tech.icon" [alt]="tech.name + ' icon'" class="tech-item__icon" />
+              <div class="tech-item__info">
+                <span class="tech-item__name">{{ tech.name }}</span>
+                <!-- Level dots -->
+                <!-- <div class="tech-item__level" [attr.aria-label]="'Nivel ' + tech.level + ' de 5'">
+                  <span
+                    *ngFor="let dot of levelArray(tech.level); let i = index"
+                    class="level-dot"
+                    [class.level-dot--filled]="i < tech.level"
+                  ></span>
+                </div> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
