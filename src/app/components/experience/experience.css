@@ -101,14 +101,6 @@
   align-items: start;
 }
 
-/* Hide date column on mobile */
-@media (max-width: 640px) {
-  .timeline__item {
-    grid-template-columns: 32px 1fr;
-  }
-  .timeline__date-col { display: none; }
-}
-
 /* ── Date column ──────────────────────────────── */
 .timeline__date-col {
   display: flex;
@@ -116,6 +108,14 @@
   align-items: flex-end;
   padding-top: 1.1rem;
   gap: 0.1rem;
+}
+
+/* Hide date column on mobile */
+@media (max-width: 640px) {
+  .timeline__item {
+    grid-template-columns: 32px 1fr;
+  }
+  .timeline__date-col { display: none; }
 }
 
 .timeline__date-start,

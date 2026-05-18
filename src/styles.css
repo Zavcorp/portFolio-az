@@ -11,6 +11,11 @@
 
 * { font-family: 'Inter', sans-serif; }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
 .innovation-gradient {
   background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);

@@ -16,23 +16,23 @@ import { CommonModule } from '@angular/common';
 export class Hero implements OnInit, AfterViewInit, OnDestroy {
 
   // ── Personal data ─────────────────────────────────────────────────────────
-  readonly name        = 'Adrian Zavaleta';
-  readonly tagline     = 'Construyo interfaces que enamoran — y las escalo hacia el backend.';
-  readonly githubUrl   = 'https://github.com/Zavcorp';
+  readonly name = 'Adrian Zavaleta';
+  readonly tagline = 'Construyo interfaces que enamoran — y las escalo hacia el backend.';
+  readonly githubUrl = 'https://github.com/Zavcorp';
   readonly linkedinUrl = 'https://linkedin.com/in/adrianzavaleta23';
-  readonly cvUrl       = 'assets/cv/adrian-zavaleta-cv.pdf'; // ← sube tu PDF aquí
-  readonly profileImg  = 'assets/images/Profile.jpg';         // ← copia Profile.jpg aquí
+  readonly cvUrl = 'assets/cv/adrian-zavaleta-cv.pdf'; // ← sube tu PDF aquí
+  readonly profileImg = 'assets/images/ProfileAZ.png';         // ← copia Profile.jpg aquí
 
   // ── Glitch typing state ───────────────────────────────────────────────────
-  readonly fullTitle   = 'Frontend Developer';
-  displayedTitle       = '';
+  readonly fullTitle = 'Frontend Developer';
+  displayedTitle = '';
 
-  private glitchChars  = '!<>-_\\/[]{}—=+*^?#░▒▓';
+  private glitchChars = '!<>-_\\/[]{}—=+*^?#░▒▓';
   private titleInterval: any;
   private glitchInterval: any;
   private glitchTimeout: any;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     setTimeout(() => this.startGlitchDecode(), 700);
