@@ -5,6 +5,7 @@ import {
   AfterViewInit
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ResumeExportService } from '../../services/resume-export.service';
 
 @Component({
   selector: 'app-hero',
@@ -14,6 +15,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./hero.css']
 })
 export class Hero implements OnInit, AfterViewInit, OnDestroy {
+
+  constructor(private resumeExport: ResumeExportService) {}
 
   // ── Personal data ─────────────────────────────────────────────────────────
   readonly name = 'Adrian Zavaleta';
@@ -32,7 +35,7 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
   private glitchInterval: any;
   private glitchTimeout: any;
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     setTimeout(() => this.startGlitchDecode(), 700);
@@ -98,11 +101,8 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  downloadCV(): void {
-    const a = document.createElement('a');
-    a.href = this.cvUrl;
-    a.download = 'Adrian-Zavaleta-CV.pdf';
-    a.click();
+  exportResumePDF(): void {
+    this.resumeExport.exportPDF();
   }
 }
 
