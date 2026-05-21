@@ -20,7 +20,7 @@
           <span class="footer__name">Adrian Zavaleta</span>
         </button>
         <p class="footer__tagline">
-          Frontend Developer · Ciudad de México
+          {{ t().footer_tagline }}
         </p>
       </div>
 
@@ -33,7 +33,7 @@
         </div>
         <div class="footer__counter-body">
           <span class="footer__counter-number" aria-live="polite">{{ visitCount() }}</span>
-          <span class="footer__counter-label">visitas registradas</span>
+          <span class="footer__counter-label">{{ t().footer_visits }}</span>
         </div>
       </div>
 
@@ -69,7 +69,7 @@
     <!-- ── Bottom row ── -->
     <div class="footer__bottom">
       <p class="footer__copy">
-        © {{ currentYear }} Adrian Zavaleta · Hecho con
+        © {{ currentYear }} Adrian Zavaleta · {{ t().footer_copy }}
         <span class="footer__heart" aria-label="amor">♥</span>
         en Angular + Tailwind
       </p>
@@ -79,7 +79,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
           <polyline points="18 15 12 9 6 15"/>
         </svg>
-        Back to top
+        {{ t().footer_top }}
       </button>
     </div>
 

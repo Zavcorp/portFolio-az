@@ -2,10 +2,12 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  AfterViewInit
+  AfterViewInit,
+  inject
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ResumeExportService } from '../../services/resume-export.service';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-hero',
@@ -15,6 +17,9 @@ import { ResumeExportService } from '../../services/resume-export.service';
   styleUrls: ['./hero.css']
 })
 export class Hero implements OnInit, AfterViewInit, OnDestroy {
+
+  private readonly translationService = inject(TranslationService);
+  readonly t = this.translationService.t;
 
   constructor(private resumeExport: ResumeExportService) {}
 

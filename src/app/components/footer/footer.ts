@@ -1,5 +1,6 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./footer.css']
 })
 export class Footer implements OnInit {
+
+  private readonly translationService = inject(TranslationService);
+  readonly t = this.translationService.t;
 
   readonly currentYear = new Date().getFullYear();
   readonly githubUrl   = 'https://github.com/Zavcorp';

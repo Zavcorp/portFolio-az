@@ -22,9 +22,9 @@
     <div class="hero__content">
 
       <!-- Status badge -->
-      <div class="hero__badge" aria-label="Disponible para trabajar">
+      <div class="hero__badge" [attr.aria-label]="t().hero_available">
         <span class="hero__badge-dot" aria-hidden="true"></span>
-        Disponible para proyectos
+        {{ t().hero_available }}
       </div>
 
       <!-- Name -->
@@ -42,39 +42,36 @@
       </div>
 
       <!-- Tagline -->
-      <p class="hero__tagline">
-        Construyo interfaces que enamoran<br>
-        <span class="hero__tagline-accent">— y las escalo hacia el backend.</span>
-      </p>
+      <p class="hero__tagline">{{ t().hero_tagline }}</p>
 
       <!-- CTA buttons -->
       <div class="hero__actions">
         <button
           class="hero__btn hero__btn--primary"
           (click)="scrollToProjects()"
-          aria-label="Ver mis proyectos"
+          [attr.aria-label]="t().hero_btn_projects"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
           </svg>
-          Ver proyectos
+          {{ t().hero_btn_projects }}
         </button>
 
         <button
           class="hero__btn hero__btn--secondary"
           (click)="exportResumePDF()"
-          aria-label="Generar y descargar CV de Adrian Zavaleta en PDF"
+          [attr.aria-label]="t().hero_btn_cv"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          Download CV
+          {{ t().hero_btn_cv }}
         </button>
       </div>
 
       <!-- Social links -->
       <div class="hero__socials">
-        <span class="hero__socials-label">find me on</span>
+        <span class="hero__socials-label">{{ t().hero_find_me }}</span>
 
         <a
           [href]="githubUrl"

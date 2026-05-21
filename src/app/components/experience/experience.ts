@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../../services/translation.service';
 
 export interface ExperienceItem {
   id: number;
@@ -22,16 +23,19 @@ export interface ExperienceItem {
 })
 export class Experience {
 
-  readonly experiences: ExperienceItem[] = [
+  private readonly translationService = inject(TranslationService);
+  readonly t = this.translationService.t;
+
+  readonly experiences = computed<ExperienceItem[]>(() => [
     {
       id: 1,
-      role: 'Senior Software Developer Engineer',
-      company: 'Softtek México',
+      role: this.t().exp1_role,
+      company: this.t().exp1_company,
       location: 'Ciudad de México, MX',
       startDate: 'Sep 2025',
       endDate: 'Feb 2026',
       current: false,
-      description: `Brindo soporte a aplicaciones en .NET WebForms, MVC y proyectos Angular, asegurando continuidad operativa y resolución de incidencias en sistemas legacy. Lidero migraciones de aplicaciones desde C# .NET hacia Angular, .NET Core y Java, mejorando rendimiento, escalabilidad y seguridad. Gestiono bases de datos Oracle y desarrollo servicios web y APIs para integrar plataformas críticas. Actualmente en proceso de aprendizaje y adopción de Java para futuras migraciones estratégicas.`,
+      description: this.t().exp1_desc,
       tags: ['.NET', 'Angular', 'C#', 'Oracle', 'Java', 'APIs', 'MVC'],
     },
     // ── Agrega aquí tus empleos anteriores siguiendo la misma estructura ──
@@ -68,7 +72,7 @@ export class Experience {
       description: `Diseñé y desarrollé una plataforma web para la gestión de contratos, procesos y actividades administrativas en PEMEX, superando en eficiencia y usabilidad a los aplicativos institucionales existentes. Implementé módulos personalizados que optimizaron tiempos de operación y mejoraron la trazabilidad de procesos. Modernicé la interfaz con tecnologías emergentes (HTML5, CSS3, Bootstrap, JavaScript) y frameworks .NET (ASP.NET, MVC, WebForms, C#, VB), además de administrar bases de datos SQL Server para garantizar integridad y seguridad de la información. La solución permitió reducir significativamente los tiempos de generación de reportes y controles, contribuyendo a la transformación digital de las gerencias y coordinaciones.`,
       tags: ['.NET WebForms', 'C#', 'VB', 'SQL-Server','Crystal Reports','DevExpress for Visual Studio', 'Jquery', 'HTML,CSS', 'JavaScript','bootstrap'],
     }
-  ];
+  ]);
 
   expandedId: number | null = null;
 

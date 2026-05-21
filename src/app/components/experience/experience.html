@@ -12,13 +12,13 @@
 
     <!-- ── Header ── -->
     <div class="experience__header">
-      <span class="section__tag">// experience</span>
+      <span class="section__tag">{{ t().exp_tag }}</span>
       <h2 class="section__title">
-        Trayectoria
-        <span class="section__title-accent">profesional</span>
+        {{ t().exp_title1 }}
+        <span class="section__title-accent">{{ t().exp_title2 }}</span>
       </h2>
       <p class="experience__subtitle">
-        Un poco de mi historial laboral — del más reciente al más antiguo.
+        {{ t().exp_subtitle }}
       </p>
     </div>
 
@@ -27,7 +27,7 @@
 
       <div
         class="timeline__item"
-        *ngFor="let exp of experiences; let i = index; let last = last"
+        *ngFor="let exp of experiences(); let i = index; let last = last"
         [class.timeline__item--last]="last"
         role="listitem"
       >
@@ -35,7 +35,7 @@
         <!-- ── Left: date column ── -->
         <div class="timeline__date-col" aria-hidden="true">
           <span class="timeline__date-end" [class.timeline__date-end--current]="exp.current">
-            {{ exp.current ? 'Presente' : exp.endDate }}
+            {{ exp.current ? t().exp_present : exp.endDate }}
           </span>
           <span class="timeline__date-sep">—</span>
           <span class="timeline__date-start">{{ exp.startDate }}</span>
@@ -68,7 +68,7 @@
               <!-- Current badge -->
               <span class="badge badge--current" *ngIf="exp.current">
                 <span class="badge__dot" aria-hidden="true"></span>
-                Actual
+                {{ t().exp_current_badge }}
               </span>
 
               <h3 class="timeline__role">{{ exp.role }}</h3>
@@ -86,7 +86,7 @@
 
               <!-- Mobile date (visible only on small screens) -->
               <span class="timeline__date-mobile">
-                {{ exp.startDate }} — {{ exp.current ? 'Presente' : exp.endDate }}
+                {{ exp.startDate }} — {{ exp.current ? t().exp_present : exp.endDate }}
               </span>
             </div>
 

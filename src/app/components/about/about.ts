@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslationService } from '../../services/translation.service';
 
 interface TechItem {
   name: string;
@@ -24,16 +25,28 @@ interface Stat {
 })
 export class About {
 
-  readonly bio = `Desarrollador web con experiencia en .NET, C#, HTML, CSS y JavaScript.
-Apasionado por entregar software de alta calidad y aprender constantemente nuevas tecnologías.
-Actualmente cursando una maestría en DevOps y Cloud, expandiendo mi stack hacia Angular, React, AWS y Azure.`;
+  private readonly translationService = inject(TranslationService);
+  readonly t = this.translationService.t;
+  readonly lang = this.translationService.lang;
 
-  readonly stats: Stat[] = [
-    { value: 'Maestría', label: 'Desarrollo y Operaciones de Software - UNIR México (2024-Cursando)' },
-    { value: 'Licenciatura', label: 'Ingeniería en Sistemas Computacionales - ITSPR(2006-2011)' },
-    { value: 'Idiomas', label: 'Español nativo, Inglés (B1)' },
-    { value: 'Certificaciones/Cursos', label: 'Scrum Fundamentals ID 924314, Udemy P-SQL, Udemy Git, Udemy.net', suffix: ' +' },
-  ];
+  // Bio lines joined into newline-separated string for template split
+  readonly bio = computed(() =>
+    `${this.t().about_bio1}\n${this.t().about_bio2}\n${this.t().about_bio3}`
+  );
+
+  readonly stats = computed<Stat[]>(() => [
+    { value: this.t().about_label1, label: this.t().about_stat1_label },
+    { value: this.t().about_label2, label: this.t().about_stat2_label },
+    { value: this.t().about_label3, label: this.t().about_stat3_label },
+    { value: this.t().about_label4, label: this.t().about_stat4_label, suffix: ' +' },
+  ]);
+
+  // readonly stats: Stat[] = [
+  //   { value: 'Maestría', label: 'Desarrollo y Operaciones de Software - UNIR México (2024-Cursando)' },
+  //   { value: 'Licenciatura', label: 'Ingeniería en Sistemas Computacionales - ITSPR(2006-2011)' },
+  //   { value: 'Idiomas', label: 'Español nativo, Inglés (B1)' },
+  //   { value: 'Certificaciones/Cursos', label: 'Scrum Fundamentals ID 924314, Udemy P-SQL, Udemy Git, Udemy.net', suffix: ' +' },
+  // ];
 
   readonly techStack: TechItem[] = [
     { name: 'JavaScript', category: 'Frontend', level: 4, color: '#fbbf24', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
@@ -54,7 +67,8 @@ Actualmente cursando una maestría en DevOps y Cloud, expandiendo mi stack hacia
     { name: 'Oracle', category: 'Database', level: 2, color: '#e879f9', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
   ];
 
-  readonly filterTabs = ['All', 'Frontend', 'Backend', 'Framework', 'Cloud', 'Database',];
+  // 'All' is a sentinel kept in English internally; only its display label is translated
+  readonly filterTabs = ['All', 'Frontend', 'Backend', 'Framework', 'Cloud', 'Database'];
   activeFilter = 'All';
 
   get filteredStack(): TechItem[] {

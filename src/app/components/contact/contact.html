@@ -4,21 +4,20 @@
 <section id="contact" class="contact" aria-label="Contact section">
 
   <div class="contact__bg-grid" aria-hidden="true"></div>
-  <div class="contact__glow contact__glow--teal"   aria-hidden="true"></div>
+  <div class="contact__glow contact__glow--teal" aria-hidden="true"></div>
   <div class="contact__glow contact__glow--purple" aria-hidden="true"></div>
 
   <div class="contact__inner">
 
     <!-- ── Header ── -->
     <div class="contact__header">
-      <span class="section__tag">// contact</span>
+      <span class="section__tag">{{ t().contact_tag }}</span>
       <h2 class="section__title">
-        Hablemos de tu
-        <span class="section__title-accent">próximo proyecto</span>
+        {{ t().contact_title1 }}
+        <span class="section__title-accent">{{ t().contact_title2 }}</span>
       </h2>
       <p class="contact__subtitle">
-        Estoy disponible para proyectos freelance, oportunidades laborales y colaboraciones.
-        No dudes en escribirme.
+        {{ t().contact_subtitle }}
       </p>
     </div>
 
@@ -28,27 +27,27 @@
       <!-- LEFT: contact cards -->
       <div class="contact__info">
 
-        <a
-          class="contact-card glass-card"
-          *ngFor="let item of contactInfo"
-          [href]="item.href"
-          target="_blank"
-          rel="noopener noreferrer"
-          [attr.aria-label]="item.ariaLabel"
-        >
+        <a class="contact-card glass-card" *ngFor="let item of contactInfo()" target="_blank" rel="noopener noreferrer"
+          [attr.aria-label]="item.ariaLabel">
           <!-- Icon -->
           <div class="contact-card__icon">
             <!-- Email -->
-            <svg *ngIf="item.icon === 'email'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            <svg *ngIf="item.icon === 'email'" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
             </svg>
             <!-- Phone -->
-            <svg *ngIf="item.icon === 'phone'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            <svg *ngIf="item.icon === 'phone'" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
             </svg>
             <!-- Location -->
-            <svg *ngIf="item.icon === 'location'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            <svg *ngIf="item.icon === 'location'" width="22" height="22" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
           </div>
 
@@ -58,8 +57,11 @@
           </div>
 
           <!-- Arrow -->
-          <svg class="contact-card__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+          <svg class="contact-card__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
           </svg>
         </a>
 
@@ -67,8 +69,8 @@
         <div class="availability glass-card">
           <span class="availability__dot" aria-hidden="true"></span>
           <div>
-            <p class="availability__title">Disponible para trabajar</p>
-            <p class="availability__sub">Respondo en menos de 24 horas</p>
+            <p class="availability__title">{{ t().contact_avail_title }}</p>
+            <p class="availability__sub">{{ t().contact_avail_sub }}</p>
           </div>
         </div>
 
@@ -80,107 +82,70 @@
         <!-- Success state -->
         <div class="form-success" *ngIf="formStatus() === 'success'">
           <div class="form-success__icon" aria-hidden="true">✓</div>
-          <h3 class="form-success__title">¡Mensaje enviado!</h3>
-          <p class="form-success__sub">Gracias por escribirme. Te responderé pronto.</p>
-          <button class="btn-reset" (click)="resetStatus()">Enviar otro mensaje</button>
+          <h3 class="form-success__title">{{ t().form_success_title }}</h3>
+          <p class="form-success__sub">{{ t().form_success_sub }}</p>
+          <button class="btn-reset" (click)="resetStatus()">{{ t().form_send_another }}</button>
         </div>
 
         <!-- Form -->
-        <form
-          class="contact__form"
-          *ngIf="formStatus() !== 'success'"
-          (ngSubmit)="onSubmit()"
-          novalidate
-          aria-label="Formulario de contacto"
-        >
+        <form class="contact__form" *ngIf="formStatus() !== 'success'" (ngSubmit)="onSubmit()" novalidate
+          aria-label="Formulario de contacto">
           <h3 class="form__title">
             <span class="bracket" aria-hidden="true">&lt;</span>
-            Envíame un mensaje
+            {{ t().form_title }}
             <span class="bracket" aria-hidden="true">/&gt;</span>
           </h3>
 
           <!-- Row: name + email -->
           <div class="form__row">
             <div class="form__group">
-              <label class="form__label" for="contact-name">Nombre *</label>
-              <input
-                id="contact-name"
-                class="form__input"
-                type="text"
-                placeholder="Tu nombre"
-                [(ngModel)]="formName"
-                name="name"
-                autocomplete="name"
-                required
-                [disabled]="formStatus() === 'sending'"
-              />
+              <label class="form__label" for="contact-name">{{ t().form_name }}</label>
+              <input id="contact-name" class="form__input" type="text" [placeholder]="t().form_name_ph"
+                [(ngModel)]="formName" name="name" autocomplete="name" required
+                [disabled]="formStatus() === 'sending'" />
             </div>
             <div class="form__group">
-              <label class="form__label" for="contact-email">Email *</label>
-              <input
-                id="contact-email"
-                class="form__input"
-                type="email"
-                placeholder="tu@email.com"
-                [(ngModel)]="formEmail"
-                name="email"
-                autocomplete="email"
-                required
-                [disabled]="formStatus() === 'sending'"
-              />
+              <label class="form__label" for="contact-email">{{ t().form_email }}</label>
+              <input id="contact-email" class="form__input" type="email" [placeholder]="t().form_email_ph"
+                [(ngModel)]="formEmail" name="email" autocomplete="email" required
+                [disabled]="formStatus() === 'sending'" />
             </div>
           </div>
 
           <!-- Subject -->
           <div class="form__group">
-            <label class="form__label" for="contact-subject">Asunto</label>
-            <input
-              id="contact-subject"
-              class="form__input"
-              type="text"
-              placeholder="¿En qué puedo ayudarte?"
-              [(ngModel)]="formSubject"
-              name="subject"
-              [disabled]="formStatus() === 'sending'"
-            />
+            <label class="form__label" for="contact-subject">{{ t().form_subject }}</label>
+            <input id="contact-subject" class="form__input" type="text" [placeholder]="t().form_subject_ph"
+              [(ngModel)]="formSubject" name="subject" [disabled]="formStatus() === 'sending'" />
           </div>
 
           <!-- Message -->
           <div class="form__group">
-            <label class="form__label" for="contact-message">Mensaje *</label>
-            <textarea
-              id="contact-message"
-              class="form__textarea"
-              placeholder="Cuéntame sobre tu proyecto o idea..."
-              [(ngModel)]="formMessage"
-              name="message"
-              rows="5"
-              required
-              [disabled]="formStatus() === 'sending'"
-            ></textarea>
+            <label class="form__label" for="contact-message">{{ t().form_message }}</label>
+            <textarea id="contact-message" class="form__textarea" [placeholder]="t().form_message_ph"
+              [(ngModel)]="formMessage" name="message" rows="5" required
+              [disabled]="formStatus() === 'sending'"></textarea>
           </div>
 
           <!-- Error -->
           <p class="form__error" *ngIf="formError()" role="alert">
-            {{ formError() }}
+            {{ formError() === 'required' ? t().form_err_required : t().form_err_email }}
           </p>
 
           <!-- Submit -->
-          <button
-            class="form__submit"
-            type="submit"
-            [disabled]="formStatus() === 'sending'"
-            [class.form__submit--sending]="formStatus() === 'sending'"
-          >
+          <button class="form__submit" type="submit" [disabled]="formStatus() === 'sending'"
+            [class.form__submit--sending]="formStatus() === 'sending'">
             <span *ngIf="formStatus() !== 'sending'">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
-              Enviar
+              {{ t().form_submit }}
             </span>
             <span *ngIf="formStatus() === 'sending'" class="sending-text">
               <span class="spinner" aria-hidden="true"></span>
-              Enviando...
+              {{ t().form_sending }}
             </span>
           </button>
 

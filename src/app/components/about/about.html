@@ -12,9 +12,9 @@
 
     <!-- ── Section header ── -->
     <div class="about__header">
-      <span class="section__tag">// about me</span>
-      <h2 class="section__title">Quién
-        <span class="section__title-accent">soy</span>
+      <span class="section__tag">{{ t().about_tag }}</span>
+      <h2 class="section__title">{{ t().about_title1 }}
+        <span class="section__title-accent">{{ t().about_title2 }}</span>
       </h2>
     </div>
 
@@ -31,12 +31,12 @@
               <circle cx="12" cy="7" r="4" />
             </svg>
           </div>
-          <h3 class="about__bio-title">Bio</h3>
-          <p class="about__bio-text" *ngFor="let line of bio.split('\n')">{{ line }}</p>
+          <h3 class="about__bio-title">{{ t().about_bio_title }}</h3>
+          <p class="about__bio-text" *ngFor="let line of bio().split('\n')">{{ line }}</p>
 
           <!-- Currently learning pills -->
           <div class="about__learning">
-            <span class="about__learning-label">// currently learning</span>
+            <span class="about__learning-label">{{ t().about_learning }}</span>
             <div class="about__pills">
               <span class="pill pill--teal">Angular</span>
               <span class="pill pill--blue">React</span>
@@ -50,7 +50,7 @@
       <div class="row">
         <!-- Stats grid -->
         <div class="about__stats">
-          <div class="stat-card glass-card" *ngFor="let stat of stats">
+          <div class="stat-card glass-card" *ngFor="let stat of stats()">
             <div class="stat-card__value">
               {{ stat.value }}<span class="stat-card__suffix">{{ stat.suffix }}</span>
             </div>
@@ -74,7 +74,7 @@
         <div class="about__filters" role="tablist" aria-label="Filtrar tecnologías">
           <button *ngFor="let tab of filterTabs" class="filter-tab" [class.filter-tab--active]="activeFilter === tab"
             (click)="setFilter(tab)" role="tab" [attr.aria-selected]="activeFilter === tab">
-            {{ tab }}
+            {{ tab === 'All' ? t().about_filter_all : tab }}
           </button>
         </div>
       </div>

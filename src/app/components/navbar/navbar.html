@@ -18,7 +18,7 @@
 
     <!-- ── Desktop links ── -->
     <ul class="navbar__links" role="list">
-      <li *ngFor="let link of navLinks">
+      <li *ngFor="let link of navLinks()">
         <button
           class="navbar__link"
           [class.navbar__link--active]="isActive(link.fragment)"
@@ -31,14 +31,29 @@
       </li>
     </ul>
 
-    <!-- ── Hire me CTA (desktop) ── -->
-    <!-- <a
-      href="mailto:tu@email.com"
-      class="navbar__cta"
-      aria-label="Hire Adrian Zavaleta"
-    >
-      Hire me
-    </a> -->
+    <!-- ── Lang toggle (desktop) ── -->
+    <div class="navbar__right">
+      <button
+        class="lang-toggle"
+        (click)="toggleLang()"
+        [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'"
+        id="lang-toggle-btn"
+        title="Toggle language / Cambiar idioma"
+      >
+        <span
+          class="lang-toggle__flag"
+          [class.lang-toggle__flag--active]="lang() === 'es'"
+          aria-hidden="true"
+        >🇲🇽</span>
+        <span class="lang-toggle__sep" aria-hidden="true">|</span>
+        <span
+          class="lang-toggle__flag"
+          [class.lang-toggle__flag--active]="lang() === 'en'"
+          aria-hidden="true"
+        >🇺🇸</span>
+        <span class="lang-toggle__label">{{ lang() === 'es' ? 'ES' : 'EN' }}</span>
+      </button>
+    </div>
 
     <!-- ── Hamburger (mobile) ── -->
     <button
@@ -94,7 +109,7 @@
 
       <!-- Drawer links -->
       <ul class="drawer__links" role="list">
-        <li *ngFor="let link of navLinks; let i = index">
+        <li *ngFor="let link of navLinks(); let i = index">
           <button
             class="drawer__link"
             [class.drawer__link--active]="isActive(link.fragment)"
@@ -108,12 +123,31 @@
         </li>
       </ul>
 
-      <!-- Drawer CTA -->
-      <!-- <div class="drawer__footer">
-        <a href="mailto:tu@email.com" class="drawer__cta" (click)="closeMobileMenu()">
-          Get in touch
-        </a>
-      </div> -->
+      <!-- Lang toggle (mobile drawer) -->
+      <div class="drawer__footer">
+        <button
+          class="lang-toggle lang-toggle--drawer"
+          (click)="toggleLang()"
+          [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'"
+          id="lang-toggle-drawer-btn"
+        >
+          <span
+            class="lang-toggle__flag"
+            [class.lang-toggle__flag--active]="lang() === 'es'"
+            aria-hidden="true"
+          >🇲🇽</span>
+          <span class="lang-toggle__sep" aria-hidden="true">|</span>
+          <span
+            class="lang-toggle__flag"
+            [class.lang-toggle__flag--active]="lang() === 'en'"
+            aria-hidden="true"
+          >🇺🇸</span>
+          <span class="lang-toggle__label lang-toggle__label--drawer">
+            {{ lang() === 'es' ? 'Español' : 'English' }}
+          </span>
+        </button>
+      </div>
+
     </div>
   </div>
 

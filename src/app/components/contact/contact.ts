@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslationService } from '../../services/translation.service';
 
 interface ContactInfo {
   icon: string;
@@ -21,48 +22,51 @@ type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 })
 export class Contact {
 
-  readonly contactInfo: ContactInfo[] = [
+  private readonly translationService = inject(TranslationService);
+  readonly t = this.translationService.t;
+
+  readonly contactInfo = computed<ContactInfo[]>(() => [
     {
       icon: 'email',
-      label: 'Email',
-      value: 'zavcorp23@gmail.com',
-      href: 'mailto:zavcorp23@gmail.com',
+      label: this.t().contact_email_lbl,
+      value: '###########',
+      href: '',
       ariaLabel: 'Enviar email a Adrian Zavaleta',
     },
     {
       icon: 'phone',
-      label: 'WhatsApp',
+      label: this.t().contact_phone_lbl,
       value: '+52 55 9164 1018',
       href: 'https://wa.me/525591641018',
       ariaLabel: 'Contactar por WhatsApp',
     },
     {
       icon: 'location',
-      label: 'Ubicación',
-      value: 'Ciudad de México, MX',
+      label: this.t().contact_loc_lbl,
+      value: this.t().contact_loc_val,
       href: 'https://maps.google.com/?q=Ciudad+de+Mexico',
       ariaLabel: 'Ver en Google Maps',
     },
-  ];
+  ]);
 
   // Form fields
-  formName    = '';
-  formEmail   = '';
+  formName = '';
+  formEmail = '';
   formSubject = '';
   formMessage = '';
 
   formStatus = signal<FormStatus>('idle');
-  formError  = signal('');
+  formError = signal('');
 
   // ── Submit ────────────────────────────────────────────────────────────────
   async onSubmit(): Promise<void> {
     if (!this.formName || !this.formEmail || !this.formMessage) {
-      this.formError.set('Por favor completa todos los campos requeridos.');
+      this.formError.set('required');
       return;
     }
 
     if (!this.isValidEmail(this.formEmail)) {
-      this.formError.set('Por favor ingresa un email válido.');
+      this.formError.set('email');
       return;
     }
 
@@ -73,7 +77,7 @@ export class Contact {
     // Para envío real, integra EmailJS, Formspree o un endpoint propio
     try {
       const subject = encodeURIComponent(this.formSubject || `Contacto desde portfolio — ${this.formName}`);
-      const body    = encodeURIComponent(
+      const body = encodeURIComponent(
         `Nombre: ${this.formName}\nEmail: ${this.formEmail}\n\n${this.formMessage}`
       );
       window.location.href = `mailto:zavcorp23@gmail.com?subject=${subject}&body=${body}`;
@@ -88,8 +92,8 @@ export class Contact {
   }
 
   resetForm(): void {
-    this.formName    = '';
-    this.formEmail   = '';
+    this.formName = '';
+    this.formEmail = '';
     this.formSubject = '';
     this.formMessage = '';
   }
