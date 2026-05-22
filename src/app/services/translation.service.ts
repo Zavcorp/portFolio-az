@@ -304,7 +304,7 @@ const EN: Translations = {
   form_err_email: 'Please enter a valid email address.',
 
   // Footer
-  footer_tagline: 'Frontend Developer · Mexico City',
+  footer_tagline: 'Full Stack Developer · Mexico City',
   footer_visits: 'registered visits',
   footer_copy: 'Made with',
   footer_top: 'Back to top',

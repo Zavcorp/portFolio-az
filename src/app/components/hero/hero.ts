@@ -21,7 +21,7 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
   private readonly translationService = inject(TranslationService);
   readonly t = this.translationService.t;
 
-  constructor(private resumeExport: ResumeExportService) {}
+  constructor(private resumeExport: ResumeExportService) { }
 
   // ── Personal data ─────────────────────────────────────────────────────────
   readonly name = 'Adrian Zavaleta';
@@ -32,7 +32,7 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
   readonly profileImg = 'assets/images/ProfileAZ.png';         // ← copia Profile.jpg aquí
 
   // ── Glitch typing state ───────────────────────────────────────────────────
-  readonly fullTitle = 'Frontend Developer';
+  readonly fullTitle = 'Full Stack Developer';
   displayedTitle = '';
 
   private glitchChars = '!<>-_\\/[]{}—=+*^?#░▒▓';
@@ -40,7 +40,7 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
   private glitchInterval: any;
   private glitchTimeout: any;
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     setTimeout(() => this.startGlitchDecode(), 700);

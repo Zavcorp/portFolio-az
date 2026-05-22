@@ -423,6 +423,9 @@
 .drawer__footer {
   padding: 1.25rem 1.5rem;
   border-top: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .drawer__cta {
@@ -538,8 +541,6 @@
   border-color: rgba(45, 212, 191, 0.25);
   color: #2dd4bf;
   padding: 0.3rem 0.65rem;
-  margin-left: auto;
-  margin-right: 0.5rem;
 }
 
 .lang-toggle__label--drawer {

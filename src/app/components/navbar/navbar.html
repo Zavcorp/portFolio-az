@@ -3,11 +3,7 @@
      Glassmorphism · dark · teal/purple accent
      ───────────────────────────────────────── -->
 
-<nav
-  class="navbar"
-  [class.navbar--hidden]="isNavHidden()"
-  [class.navbar--scrolled]="lastScrollY > 20"
->
+<nav class="navbar" [class.navbar--hidden]="isNavHidden()" [class.navbar--scrolled]="lastScrollY > 20">
   <div class="navbar__inner">
 
     <!-- ── Brand ── -->
@@ -19,12 +15,8 @@
     <!-- ── Desktop links ── -->
     <ul class="navbar__links" role="list">
       <li *ngFor="let link of navLinks()">
-        <button
-          class="navbar__link"
-          [class.navbar__link--active]="isActive(link.fragment)"
-          (click)="scrollTo(link.fragment)"
-          [attr.aria-current]="isActive(link.fragment) ? 'page' : null"
-        >
+        <button class="navbar__link" [class.navbar__link--active]="isActive(link.fragment)"
+          (click)="scrollTo(link.fragment)" [attr.aria-current]="isActive(link.fragment) ? 'page' : null">
           {{ link.label }}
           <span class="navbar__link-dot" aria-hidden="true"></span>
         </button>
@@ -33,36 +25,21 @@
 
     <!-- ── Lang toggle (desktop) ── -->
     <div class="navbar__right">
-      <button
-        class="lang-toggle"
-        (click)="toggleLang()"
-        [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'"
-        id="lang-toggle-btn"
-        title="Toggle language / Cambiar idioma"
-      >
-        <span
-          class="lang-toggle__flag"
-          [class.lang-toggle__flag--active]="lang() === 'es'"
-          aria-hidden="true"
-        >🇲🇽</span>
+      <button class="lang-toggle" (click)="toggleLang()"
+        [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'" id="lang-toggle-btn"
+        title="Toggle language / Cambiar idioma">
+        <span class="lang-toggle__flag" [class.lang-toggle__flag--active]="lang() === 'es'"
+          aria-hidden="true">🇲🇽</span>
         <span class="lang-toggle__sep" aria-hidden="true">|</span>
-        <span
-          class="lang-toggle__flag"
-          [class.lang-toggle__flag--active]="lang() === 'en'"
-          aria-hidden="true"
-        >🇺🇸</span>
+        <span class="lang-toggle__flag" [class.lang-toggle__flag--active]="lang() === 'en'"
+          aria-hidden="true">🇺🇸</span>
         <span class="lang-toggle__label">{{ lang() === 'es' ? 'ES' : 'EN' }}</span>
       </button>
     </div>
 
     <!-- ── Hamburger (mobile) ── -->
-    <button
-      class="navbar__hamburger"
-      (click)="toggleMobileMenu()"
-      [attr.aria-expanded]="isMobileOpen()"
-      aria-label="Toggle navigation menu"
-      aria-controls="mobile-menu"
-    >
+    <button class="navbar__hamburger" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileOpen()"
+      aria-label="Toggle navigation menu" aria-controls="mobile-menu">
       <span class="hamburger__bar" [class.hamburger__bar--open]="isMobileOpen()"></span>
       <span class="hamburger__bar" [class.hamburger__bar--open]="isMobileOpen()"></span>
       <span class="hamburger__bar" [class.hamburger__bar--open]="isMobileOpen()"></span>
@@ -70,21 +47,13 @@
 
   </div>
 
+</nav>
+
   <!-- ── Mobile drawer ── -->
-  <div
-    id="mobile-menu"
-    class="navbar__mobile"
-    [class.navbar__mobile--open]="isMobileOpen()"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Navigation menu"
-  >
+  <div id="mobile-menu" class="navbar__mobile" [class.navbar__mobile--open]="isMobileOpen()" role="dialog"
+    aria-modal="true" aria-label="Navigation menu">
     <!-- Backdrop -->
-    <div
-      class="navbar__backdrop"
-      (click)="closeMobileMenu()"
-      aria-hidden="true"
-    ></div>
+    <div class="navbar__backdrop" (click)="closeMobileMenu()" aria-hidden="true"></div>
 
     <!-- Drawer panel -->
     <div class="navbar__drawer">
@@ -96,13 +65,11 @@
           <p class="drawer__name">{{ fullName }}</p>
           <p class="drawer__role">Full Stack Developer</p>
         </div>
-        <button
-          class="drawer__close"
-          (click)="closeMobileMenu()"
-          aria-label="Close menu"
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        <button class="drawer__close" (click)="closeMobileMenu()" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
       </div>
@@ -110,13 +77,9 @@
       <!-- Drawer links -->
       <ul class="drawer__links" role="list">
         <li *ngFor="let link of navLinks(); let i = index">
-          <button
-            class="drawer__link"
-            [class.drawer__link--active]="isActive(link.fragment)"
-            [style.animation-delay]="(i * 60) + 'ms'"
-            (click)="scrollTo(link.fragment)"
-            [attr.aria-current]="isActive(link.fragment) ? 'page' : null"
-          >
+          <button class="drawer__link" [class.drawer__link--active]="isActive(link.fragment)"
+            [style.animation-delay]="(i * 60) + 'ms'" (click)="scrollTo(link.fragment)"
+            [attr.aria-current]="isActive(link.fragment) ? 'page' : null">
             <span class="drawer__link-number">{{ (i + 1).toString().padStart(2,'0') }}</span>
             {{ link.label }}
           </button>
@@ -125,23 +88,13 @@
 
       <!-- Lang toggle (mobile drawer) -->
       <div class="drawer__footer">
-        <button
-          class="lang-toggle lang-toggle--drawer"
-          (click)="toggleLang()"
-          [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'"
-          id="lang-toggle-drawer-btn"
-        >
-          <span
-            class="lang-toggle__flag"
-            [class.lang-toggle__flag--active]="lang() === 'es'"
-            aria-hidden="true"
-          >🇲🇽</span>
+        <button class="lang-toggle lang-toggle--drawer" (click)="toggleLang()"
+          [attr.aria-label]="lang() === 'es' ? 'Switch to English' : 'Cambiar a Español'" id="lang-toggle-drawer-btn">
+          <span class="lang-toggle__flag" [class.lang-toggle__flag--active]="lang() === 'es'"
+            aria-hidden="true">🇲🇽</span>
           <span class="lang-toggle__sep" aria-hidden="true">|</span>
-          <span
-            class="lang-toggle__flag"
-            [class.lang-toggle__flag--active]="lang() === 'en'"
-            aria-hidden="true"
-          >🇺🇸</span>
+          <span class="lang-toggle__flag" [class.lang-toggle__flag--active]="lang() === 'en'"
+            aria-hidden="true">🇺🇸</span>
           <span class="lang-toggle__label lang-toggle__label--drawer">
             {{ lang() === 'es' ? 'Español' : 'English' }}
           </span>
@@ -150,5 +103,3 @@
 
     </div>
   </div>
-
-</nav>
