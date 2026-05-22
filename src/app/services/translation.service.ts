@@ -202,7 +202,7 @@ const ES: Translations = {
   form_err_email: 'Por favor ingresa un email válido.',
 
   // Footer
-  footer_tagline: 'Frontend Developer · Ciudad de México',
+  footer_tagline: 'Full Stack Developer · Ciudad de México',
   footer_visits: 'visitas registradas',
   footer_copy: 'Hecho con',
   footer_top: 'Volver arriba',
