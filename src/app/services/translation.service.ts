@@ -69,6 +69,18 @@ export interface Translations {
   exp1_role: string;
   exp1_company: string;
   exp1_desc: string;
+  // SyE description
+  exp2_role: string;
+  exp2_company: string;
+  exp2_desc: string;
+  // Soft description
+  exp3_role: string;
+  exp3_company: string;
+  exp3_desc: string;
+  // PEMEX description
+  exp4_role: string;
+  exp4_company: string;
+  exp4_desc: string;
 
   // ── Contact ──────────────────────────────────────────
   contact_tag: string;
@@ -172,6 +184,16 @@ const ES: Translations = {
   exp1_role: 'Senior Software Developer Engineer',
   exp1_company: 'Softtek México',
   exp1_desc: 'Brindo soporte a aplicaciones en .NET WebForms, MVC y proyectos Angular, asegurando continuidad operativa y resolución de incidencias en sistemas legacy. Lidero migraciones de aplicaciones desde C# .NET hacia Angular, .NET Core y Java, mejorando rendimiento, escalabilidad y seguridad. Gestiono bases de datos Oracle y desarrollo servicios web y APIs para integrar plataformas críticas. Actualmente en proceso de aprendizaje y adopción de Java para futuras migraciones estratégicas.',
+  exp2_role: 'Support Engineer',
+  exp2_company: 'SyE Software',
+  exp2_desc: 'Soporte y migración de aplicaciones web C# NET a nuevas tecnologías como Angular, NET Core MVC, así como mejoramiento de sitios web utilizando HTML5, CSS3, ES6, Bootstrap. En este tiempo se han logrado mejoras y optimizaciones importantes en procesos y diseños web que benefician al cliente en diversas aplicaciones.',
+  exp3_role: 'Software Engineer',
+  exp3_company: 'Softtek México',
+  exp3_desc: 'Desarrollé aplicaciones web con C#, JavaScript (ES6), LINQ y jQuery, integradas con bases de datos Oracle 11g, logrando una reducción aproximada del 35% en tiempos de respuesta de los sistemas. Brindé soporte a aplicativos en .NET 3.5, 4.0, etc.',
+  exp4_role: 'Programador .NET',
+  exp4_company: 'PEMEX',
+  exp4_desc: 'Diseñé y desarrollé una plataforma web para la gestión de contratos, procesos y actividades administrativas en PEMEX, superando en eficiencia y usabilidad a los aplicativos institucionales existentes. Implementé módulos personalizados que optimizaron tiempos de operación y mejoraron la trazabilidad de procesos. Modernicé la interfaz con tecnologías emergentes (HTML5, CSS3, Bootstrap, JavaScript) y frameworks .NET (ASP.NET, MVC, WebForms, C#, VB), además de administrar bases de datos SQL Server para garantizar integridad y seguridad de la información. La solución permitió reducir significativamente los tiempos de generación de reportes y controles, contribuyendo a la transformación digital de las gerencias y coordinaciones.',
+
 
   // Contact
   contact_tag: '// contacto',
@@ -274,6 +296,15 @@ const EN: Translations = {
   exp1_role: 'Senior Software Developer Engineer',
   exp1_company: 'Softtek México',
   exp1_desc: 'Provide support for applications in .NET WebForms, MVC and Angular projects, ensuring operational continuity and incident resolution in legacy systems. Lead application migrations from C# .NET to Angular, .NET Core and Java, improving performance, scalability and security. Manage Oracle databases and develop web services and APIs to integrate critical platforms. Currently learning and adopting Java for future strategic migrations.',
+  exp2_role: 'Support Engineer',
+  exp2_company: 'SyE Software',
+  exp2_desc: 'Support and migration of C # NET web applications to new technologies such as Angular, NET Core MVC, as well as website improvement using HTML5, CSS3, ES6, Bootstrap. During this time, significant improvements and optimizations have been achieved in processes and web designs that benefit the client in various applications.',
+  exp3_role: 'Software Engineer',
+  exp3_company: 'Softtek México',
+  exp3_desc: 'Development of web applications using C #, WebServices, JavaScript, ES6 LINQ, jQuery and Database in Oracle 11 g, support for NET 3.5 and lower applications and migrations to higher frameworks according to requirements and needs, as well as creation of REST API services NET.',
+  exp4_role: '.NET Developer',
+  exp4_company: 'PEMEX',
+  exp4_desc: 'Development of new modules and maintenance of a web platform created to control various processes in PEMEXs management and coordination departments. During this time, significant progress was made in updating the platform to accommodate new emerging technologies (HTML 5, CSS 3, Bootstrap, JavaScript, etc.). Web analysis and development in .NET technologies (ASP.NET, Webforms, VBasic, C#, Layers, MVC) and SQL Server databases. A web platform was designed from scratch to control contracts, processes, and various activities in PEMEXs coordination departments. Over this time, specific modules were created according to the needs of the administrative and process areas, achieving significant progress in time optimization. The interface was also subject to changes in line with emerging technologies.',
 
   // Contact
   contact_tag: '// contact',
