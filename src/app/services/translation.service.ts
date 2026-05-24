@@ -172,7 +172,7 @@ const ES: Translations = {
   projects_soon_desc2: 'Explorando nuevas ideas y tecnologías. Stay tuned.',
   proj1_desc: 'Simulador de precios de autos que permite calcular costos, mensualidades y comparar opciones de financiamiento de forma interactiva.',
   proj2_desc: 'Aplicación para buscar y explorar GIFs animados usando la API de Giphy, con búsqueda en tiempo real y diseño responsivo.',
-  proj3_desc: 'Plataforma de ranking para DJs con sistema de votación, perfiles de artistas y visualización de estadísticas en tiempo real.',
+  proj3_desc: 'Demo de tienda online con Angular, TypeScript y Tailwind, con un catálogo de productos.',
 
   // Experience
   exp_tag: '// experiencia',
@@ -284,7 +284,7 @@ const EN: Translations = {
   projects_soon_desc2: 'Exploring new ideas and technologies. Stay tuned.',
   proj1_desc: 'Car price simulator to calculate costs, monthly payments and compare financing options interactively.',
   proj2_desc: 'App to search and explore animated GIFs using the Giphy API, with real-time search and responsive design.',
-  proj3_desc: 'DJ ranking platform with a voting system, artist profiles and real-time statistics visualization.',
+  proj3_desc: 'Demo online store with Angular, TypeScript and Tailwind CSS, with a catalog of products.',
 
   // Experience
   exp_tag: '// experience',
