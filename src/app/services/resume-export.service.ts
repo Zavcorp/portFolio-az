@@ -124,7 +124,7 @@ const CONTENT = PAGE_W - MARGIN * 2;
 @Injectable({ providedIn: 'root' })
 export class ResumeExportService {
 
-  constructor(private translationService: TranslationService) {}
+  constructor(private translationService: TranslationService) { }
 
   exportPDF(): void {
     const isEn = this.translationService.lang() === 'en';
@@ -241,8 +241,7 @@ export class ResumeExportService {
     doc.text(contactLines, MARGIN, y);
     y += contactLines.length * 4.5 + 2;
 
-    rule(y, C.rule);
-    y += 6;
+    // Rule line removed as requested
 
     // ──────────────────────────────────────────────────────────────────────
     // ABOUT ME
