@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jsPDF } from 'jspdf';
+import { TranslationService } from './translation.service';
 
 // ── Palette ────────────────────────────────────────────────────────────────
 const C = {
@@ -123,7 +124,43 @@ const CONTENT = PAGE_W - MARGIN * 2;
 @Injectable({ providedIn: 'root' })
 export class ResumeExportService {
 
+  constructor(private translationService: TranslationService) {}
+
   exportPDF(): void {
+    const isEn = this.translationService.lang() === 'en';
+    const t = this.translationService.t();
+
+    const currentPersonal = isEn ? {
+      ...PERSONAL,
+      title: 'Web Developer · Computer Systems Engineer',
+      location: 'Mexico City, MX'
+    } : PERSONAL;
+
+    const currentBio = isEn ? [t.about_bio1, t.about_bio2, t.about_bio3] : BIO;
+
+    const currentSkills = isEn ? SKILLS.map(s => s.category === 'Herramientas' ? { ...s, category: 'Tools' } : s) : SKILLS;
+
+    const currentExp = isEn ? [
+      { ...EXPERIENCE[0], role: t.exp1_role, company: t.exp1_company, description: t.exp1_desc },
+      { ...EXPERIENCE[1], role: t.exp2_role, company: t.exp2_company, description: t.exp2_desc },
+      { ...EXPERIENCE[2], role: t.exp3_role, company: t.exp3_company, description: t.exp3_desc },
+      { ...EXPERIENCE[3], role: t.exp4_role, company: t.exp4_company, description: t.exp4_desc },
+    ] : EXPERIENCE;
+
+    const currentEdu = isEn ? [
+      { degree: "Master's in Software Development and Operations", institution: 'UNIR México', period: '2024 – Ongoing' },
+      { degree: 'Computer Systems Engineering', institution: 'ITSPR', period: '2006 – 2011' },
+    ] : EDUCATION;
+
+    const currentLangs = isEn ? 'Spanish (Native) · English (B1)' : LANGUAGES;
+    const currentCerts = CERTIFICATIONS;
+
+    const sectionAbout = isEn ? 'ABOUT ME' : 'ACERCA DE MÍ';
+    const sectionSkills = isEn ? 'SKILLS' : 'HABILIDADES';
+    const sectionExp = isEn ? 'EXPERIENCE' : 'EXPERIENCIA';
+    const sectionEdu = isEn ? 'EDUCATION' : 'EDUCACIÓN';
+    const sectionLangs = isEn ? 'LANGUAGES & CERTIFICATIONS' : 'IDIOMAS Y CURSOS ';
+
     const doc = new jsPDF({ unit: 'mm', format: 'a4' });
     let y = MARGIN;
 
@@ -180,13 +217,13 @@ export class ResumeExportService {
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(22);
     setColor(C.black);
-    doc.text(PERSONAL.name, MARGIN, y);
+    doc.text(currentPersonal.name, MARGIN, y);
     y += 7;
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
     setColor(C.darkGray);
-    doc.text(PERSONAL.title, MARGIN, y);
+    doc.text(currentPersonal.title, MARGIN, y);
     y += 6;
 
     // Contact row
@@ -194,11 +231,11 @@ export class ResumeExportService {
     doc.setFontSize(8.5);
     setColor(C.midGray);
     const contactLine = [
-      PERSONAL.phone,
-      PERSONAL.email,
-      PERSONAL.location,
-      PERSONAL.linkedin,
-      PERSONAL.github,
+      currentPersonal.phone,
+      currentPersonal.email,
+      currentPersonal.location,
+      currentPersonal.linkedin,
+      currentPersonal.github,
     ].join('  |  ');
     const contactLines = doc.splitTextToSize(contactLine, CONTENT);
     doc.text(contactLines, MARGIN, y);
@@ -210,18 +247,18 @@ export class ResumeExportService {
     // ──────────────────────────────────────────────────────────────────────
     // ABOUT ME
     // ──────────────────────────────────────────────────────────────────────
-    sectionHeader('ACERCA DE MÍ');
+    sectionHeader(sectionAbout);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
-    const bioText = BIO.join(' ');
+    const bioText = currentBio.join(' ');
     y = wrappedText(bioText, MARGIN, y, CONTENT, 5, C.darkGray);
 
     // ──────────────────────────────────────────────────────────────────────
     // SKILLS
     // ──────────────────────────────────────────────────────────────────────
-    sectionHeader('HABILIDADES');
+    sectionHeader(sectionSkills);
     const labelW = 32;
-    for (const group of SKILLS) {
+    for (const group of currentSkills) {
       newPageIfNeeded(7);
       // Category label
       doc.setFont('helvetica', 'normal');
@@ -240,9 +277,9 @@ export class ResumeExportService {
     // ──────────────────────────────────────────────────────────────────────
     // EXPERIENCE
     // ──────────────────────────────────────────────────────────────────────
-    sectionHeader('EXPERIENCIA');
+    sectionHeader(sectionExp);
 
-    for (const exp of EXPERIENCE) {
+    for (const exp of currentExp) {
       newPageIfNeeded(20);
 
       // Role + company
@@ -317,9 +354,13 @@ export class ResumeExportService {
     // ──────────────────────────────────────────────────────────────────────
     // EDUCATION
     // ──────────────────────────────────────────────────────────────────────
-    sectionHeader('EDUCACIÓN');
+    if (isEn) {
+      doc.addPage();
+      y = MARGIN;
+    }
+    sectionHeader(sectionEdu);
 
-    for (const edu of EDUCATION) {
+    for (const edu of currentEdu) {
       newPageIfNeeded(10);
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(9);
@@ -343,16 +384,16 @@ export class ResumeExportService {
     // ──────────────────────────────────────────────────────────────────────
     // LANGUAGES & CERTIFICATIONS
     // ──────────────────────────────────────────────────────────────────────
-    sectionHeader('IDIOMAS Y CURSOS ');
+    sectionHeader(sectionLangs);
 
     newPageIfNeeded(6);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
     setColor(C.darkGray);
-    doc.text(LANGUAGES, MARGIN, y);
+    doc.text(currentLangs, MARGIN, y);
     y += 6;
 
-    for (const cert of CERTIFICATIONS) {
+    for (const cert of currentCerts) {
       newPageIfNeeded(5);
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(8.5);
@@ -362,6 +403,6 @@ export class ResumeExportService {
     }
 
     // ── Save ───────────────────────────────────────────────────────────────
-    doc.save('Adrian-Zavaleta-Resume.pdf');
+    doc.save(isEn ? 'Adrian-Zavaleta-Resume-EN.pdf' : 'Adrian-Zavaleta-Resume-ES.pdf');
   }
 }
