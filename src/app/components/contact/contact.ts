@@ -2,6 +2,7 @@ import { Component, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslationService } from '../../services/translation.service';
+import emailjs from '@emailjs/browser';
 
 interface ContactInfo {
   icon: string;
@@ -73,21 +74,28 @@ export class Contact {
     this.formError.set('');
     this.formStatus.set('sending');
 
-    // Abre el cliente de email nativo con los datos del formulario
-    // Para envío real, integra EmailJS, Formspree o un endpoint propio
     try {
-      const subject = encodeURIComponent(this.formSubject || `Contacto desde portfolio — ${this.formName}`);
-      const body = encodeURIComponent(
-        `Nombre: ${this.formName}\nEmail: ${this.formEmail}\n\n${this.formMessage}`
-      );
-      window.location.href = `mailto:zavcorp23@gmail.com?subject=${subject}&body=${body}`;
+      const serviceId = 'service_dgt4jhm';
+      const templateId = 'msj_contacto_cv';
+      const publicKey = 'sQYUU4FPaNev9LZxU';
 
-      // Simulate short delay then show success
-      await this.delay(800);
+      const templateParams = {
+        from_name: this.formName,
+        from_email: this.formEmail,
+        to_email: 'zavcorp23@gmail.com',
+        subject: this.formSubject || `Contacto desde portfolio — ${this.formName}`,
+        message: this.formMessage,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, {
+        publicKey: publicKey,
+      });
+
       this.formStatus.set('success');
       this.resetForm();
-    } catch {
+    } catch (error) {
       this.formStatus.set('error');
+      console.error('Error enviando email:', error);
     }
   }
 
