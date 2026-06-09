@@ -82,7 +82,7 @@ export class Contact {
       const templateParams = {
         from_name: this.formName,
         from_email: this.formEmail,
-        to_email: 'zavcorp23@gmail.com',
+        //to_email: 'zavcorp23@gmail.com',
         subject: this.formSubject || `Contacto desde portfolio — ${this.formName}`,
         message: this.formMessage,
       };
